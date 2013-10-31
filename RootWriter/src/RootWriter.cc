@@ -22,6 +22,7 @@ bool RootWriter::initialize()
 {
 
     for ( std::map<std::string, std::string>::iterator it = fmap.begin(); it != fmap.end(); ++it ) {
+        LogDebug << "Add File: " << it->first << std::endl;
 	addFile(it->first, it->second);
     }
 
@@ -32,7 +33,9 @@ bool RootWriter::finalize()
 {
     std::map<std::string, TFile*>::iterator it = m_key2file.begin();
     while ( it != m_key2file.end() ) {
+        LogDebug << "Save File: " << it->first << std::endl;
 	it->second->Write();
+	it->second->Close();
 	delete it->second;
 	++it;
     }

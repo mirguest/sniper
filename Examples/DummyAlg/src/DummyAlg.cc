@@ -67,6 +67,13 @@ bool DummyAlg::execute()
     m_tree1->Fill();
     m_tree2->Fill();
     m_tree3->Fill();
+    LogInfo << "Fill: " 
+            << m_iLeaf
+            << ", "
+            << m_fLeaf
+            << ", "
+            << m_dLeaf
+            << std::endl;
 
     return true;
 }

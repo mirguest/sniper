@@ -11,20 +11,18 @@ import libSniperPython as sp
 mgr = libSniperMgr.SniperMgr()
 sp.setProperty("Sniper", "EvtMax", 5)
 sp.setProperty("Sniper", "InputSvc", "NONE")
-sp.setProperty("Sniper", "LogLevel", 2)
-sp.setProperty("Sniper", "Dlls", ["DummyAlg", "RootWriter"])
-
-sp.setProperty("AlgMgr", "Contents", ["DummyAlg"])
-sp.setProperty("SvcMgr", "Contents", ["RootWriter"])
+sp.setProperty("Sniper", "LogLevel", 0)
+sp.setProperty("Sniper", "Dlls", ["RootWriter", "DummyAlg"])
 
 mgr.configure()
 
-dalg = sp.AlgMgr.get("DummyAlg/dalg", True)
-rw = sp.SvcMgr.get("RootWriter/rw", True)
-
+rw = sp.SvcMgr.get("RootWriter", True)
 # now to configure the algs and svcs.
 d = {"FILE1": "output1.root", "FILE2": "output2.root"}
 rw.setProp("Output", d)
+
+dalg = sp.AlgMgr.get("DummyAlg/dalg", True)
+
 
 # begin to run
 mgr.initialize()
