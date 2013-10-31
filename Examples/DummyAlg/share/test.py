@@ -2,6 +2,9 @@
 # -*- coding:utf-8 -*-
 # author: lintao
 
+import sys
+sys.setdlopenflags( 0x100 | 0x2 )    # RTLD_GLOBAL | RTLD_NOW
+
 import libSniperMgr
 import libSniperPython as sp
 
